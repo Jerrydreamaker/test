@@ -13,6 +13,7 @@ public class KafkaProducer extends Thread {
     public KafkaProducer(String topic) {
         props.put("serializer.class", "kafka.serializer.StringEncoder");
         props.put("metadata.broker.list", "localhost:9092");
+        props.put("request.required.acks","-1");
         producer = new Producer<Integer, String>(new ProducerConfig(props));
         this.topic = topic;
     }
